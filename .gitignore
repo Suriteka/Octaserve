@@ -1,0 +1,8 @@
+# Node Modules
+node_modules/
+
+# Packages
+package-lock.json
+
+#VSC
+.vsc
