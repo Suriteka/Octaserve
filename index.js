@@ -1,13 +1,21 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var cors = require('cors');
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
+
+const PORT = process.env.PORT || 5000;
+const INDEX = path.join(__dirname, 'index.html');
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
 
 let clientTv = null;
 let userPhone = null;
 
-io.on('connection', function (socket) {
+const io = socketIO(server);
 
+io.on('connection', function (socket) {
     socket.on('connectionTv', () => {
         console.log("Connextion");
         // clientTv = socket.id;
@@ -101,11 +109,4 @@ io.on('connection', function (socket) {
         //     clientTv = null
         // }
     });
-});
-
-
-var port = process.env.PORT || 5000;
-
-http.listen(port, function () {
-    console.log('Serveur ouvert sur le port :' + port);
 });
