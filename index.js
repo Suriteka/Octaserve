@@ -19,7 +19,7 @@ const io = socketIO(server);
 io.on('connection', function (socket) {
 
     /* Nous récupérons les bons identifiants pour envoyer au bonnes personne le flux, et pas en broadcast */
-    socket.on('connectionTv', () => {
+    socket.on('clientTv', () => {
         console.log("Connexion de la télévision");
         clientTv = socket.id;
         io.to(`${clientTv}`).emit('connectedTV', 'Hello television');
