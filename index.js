@@ -29,6 +29,7 @@ io.on('connection', function (socket) {
         console.log("Connexion du téléphone de l'utilisateur");
         userPhone = socket.id;
         io.to(`${userPhone}`).emit('connectedUser', 'Hello téléphone');
+        io.to(`${clientTv}`).emit('startIntroduction', true);
     });
 
     socket.on('dronePhone', () => {
@@ -39,10 +40,6 @@ io.on('connection', function (socket) {
 
 
     /* */
-    socket.on('scanQrCode', () => {
-        io.to(`${clientTv}`).emit('startIntroduction', true);
-    });
-    
     socket.on('lookAtScreen', () => {
         // io.sockets.connected[clientTv].emit('lookAtScreen', true);
         io.to(`${clientTv}`).emit('lookAtScreen', true);
