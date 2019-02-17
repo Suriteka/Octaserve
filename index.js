@@ -22,19 +22,19 @@ io.on('connection', function (socket) {
     socket.on('connectionTv', () => {
         console.log("Connexion de la télévision");
         clientTv = socket.id;
-        io.to(`${clientTv}`).emit('connection', 'Hello television');
+        io.to(`${clientTv}`).emit('connectedTV', 'Hello television');
     });
 
     socket.on('userPhone', () => {
         console.log("Connexion du téléphone de l'utilisateur");
         userPhone = socket.id;
-        io.to(`${userPhone}`).emit('connection', 'Hello téléphone');
+        io.to(`${userPhone}`).emit('connectedUser', 'Hello téléphone');
     });
 
     socket.on('dronePhone', () => {
         console.log("Connexion du téléphone connecté au drone");
         dronePhone = socket.id;
-        io.to(`${dronePhone}`).emit('connection', 'Hello drone');
+        io.to(`${dronePhone}`).emit('connectedDrone', 'Hello drone');
     });
 
 
