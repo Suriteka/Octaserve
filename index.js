@@ -12,15 +12,33 @@ const server = express()
 
 let clientTv = null;
 let userPhone = null;
+let dronePhone = null;
 
 const io = socketIO(server);
 
 io.on('connection', function (socket) {
+
+    /* Nous récupérons les bons identifiants pour envoyer au bonnes personne le flux, et pas en broadcast */
     socket.on('connectionTv', () => {
-        console.log("Connextion");
-        // clientTv = socket.id;
+        console.log("Connexion de la télévision");
+        clientTv = socket.id;
+        io.to(`${clientTv}`).emit('connection', 'Hello television');
     });
 
+    socket.on('userPhone', () => {
+        console.log("Connexion du téléphone de l'utilisateur");
+        userPhone = socket.id;
+        io.to(`${userPhone}`).emit('connection', 'Hello téléphone');
+    });
+
+    socket.on('dronePhone', () => {
+        console.log("Connexion du téléphone connecté au drone");
+        dronePhone = socket.id;
+        io.to(`${dronePhone}`).emit('connection', 'Hello drone');
+    });
+
+
+    /* */
     socket.on('scanQrCode', () => {
         console.log("SCAN");
         userPhone = socket.id;
