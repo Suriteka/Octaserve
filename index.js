@@ -97,6 +97,9 @@ io.on('connection', function (socket) {
     socket.on('stopByUserDrone', () => {
         io.to(`${clientTv}`).emit('stopByUserDrone', true);
     });
+    socket.on('sendGyro', (data) => {
+        io.to(`${dronePhone}`).emit('sendGyro', data);
+    })
 
     socket.on('disconnect', function () {
         // if (clientTv === socket.id) {
