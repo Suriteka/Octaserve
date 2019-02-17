@@ -40,86 +40,65 @@ io.on('connection', function (socket) {
 
     /* */
     socket.on('scanQrCode', () => {
-        console.log("SCAN");
-        userPhone = socket.id;
-        // io.sockets.connected[clientTv].emit('startIntroduction', true);
-        io.emit('startIntroduction', true);
+        io.to(`${clientTv}`).emit('startIntroduction', true);
     });
-
-
+    
     socket.on('lookAtScreen', () => {
         // io.sockets.connected[clientTv].emit('lookAtScreen', true);
-        io.emit('lookAtScreen', true);
+        io.to(`${clientTv}`).emit('lookAtScreen', true);
 
     });
 
     socket.on('isereView', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('isereView', true);
+        io.to(`${clientTv}`).emit('isereView', true);
     });
+    socket.on('isereHasRead', () => {
+       io.to(`${dronePhone}`).emit('isereHasRead', true);
+   });
     socket.on('movingIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('movingIntroduction', true);
+        io.to(`${clientTv}`).emit('movingIntroduction', true);
     });
     socket.on('turnIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('turnIntroduction', true);
+        io.to(`${clientTv}`).emit('turnIntroduction', true);
     });
     socket.on('upIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('upIntroduction', true);
+        io.to(`${clientTv}`).emit('upIntroduction', true);
     });
     socket.on('stopIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('stopIntroduction', true);
+        io.to(`${clientTv}`).emit('stopIntroduction', true);
     });
     socket.on('understandIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('understandIntroduction', true);
+        io.to(`${clientTv}`).emit('understandIntroduction', true);
     });
-
     socket.on('understandIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('understandIntroduction', true);
+        io.to(`${clientTv}`).emit('understandIntroduction', true);
     });
     socket.on('letsGoIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('letsGoIntroduction', true);
+        io.to(`${clientTv}`).emit('letsGoIntroduction', true);
     });
     socket.on('letsGoIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('letsGoIntroduction', true);
+        io.to(`${clientTv}`).emit('letsGoIntroduction', true);
     });
-
     socket.on('letsGoIntroduction', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('letsGoIntroduction', true);
+        io.to(`${clientTv}`).emit('letsGoIntroduction', true);
     });
     socket.on('chooseLandscape', (data) => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('chooseLandscape', data);
+        io.to(`${clientTv}`).emit('chooseLandscape', data);
     });
     socket.on('confirmLandscape', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('confirmLandscape', true);
+        io.to(`${clientTv}`).emit('confirmLandscape', true);
     });
     socket.on('closeLandscape', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('closeLandscape', true);
+        io.to(`${clientTv}`).emit('closeLandscape', true);
     });
     socket.on('loadDrone', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('loadDrone', true);
+        io.to(`${clientTv}`).emit('loadDrone', true);
     });
-
     socket.on('startDrone', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('startDrone', true);
+        io.to(`${clientTv}`).emit('startDrone', true);
     });
-
     socket.on('stopByUserDrone', () => {
-        // io.sockets.connected[clientTv].emit('isereView', true);
-        io.emit('stopByUserDrone', true);
+        io.to(`${clientTv}`).emit('stopByUserDrone', true);
     });
 
     socket.on('disconnect', function () {
