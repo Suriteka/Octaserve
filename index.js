@@ -50,7 +50,7 @@ io.on('connection', function (socket) {
         io.to(`${clientTv}`).emit('isereView', true);
     });
     socket.on('isereHasRead', () => {
-       io.to(`${dronePhone}`).emit('isereHasRead', true);
+       io.to(`${userPhone}`).emit('isereHasRead', true);
    });
     socket.on('movingIntroduction', () => {
         io.to(`${clientTv}`).emit('movingIntroduction', true);
