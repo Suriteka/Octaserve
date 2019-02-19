@@ -9,7 +9,6 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-
 let clientTv = null;
 let userPhone = null;
 let dronePhone = null;
@@ -38,8 +37,12 @@ io.on('connection', function (socket) {
         io.to(`${dronePhone}`).emit('connectedDrone', 'Hello drone');
     });
 
+    /* Sending video */
+    socket.on('sendVideo', (data) => {
+        io.to(`${clientTv}`).emit('video', data);
+    })
 
-    /* */
+    /* Events send to screens between User Phone and Screen */
     socket.on('lookAtScreen', () => {
         // io.sockets.connected[clientTv].emit('lookAtScreen', true);
         io.to(`${clientTv}`).emit('lookAtScreen', true);
