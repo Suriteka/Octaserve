@@ -52,6 +52,10 @@ io.on('connection', function (socket) {
     socket.on('isereView', () => {
         io.to(`${clientTv}`).emit('isereView', true);
     });
+
+    socket.on('useHeadPhone', () => {
+        io.to(`${clientTv}`).emit('useHeadPhone', true);
+    });
     socket.on('isereHasRead', () => {
        io.to(`${userPhone}`).emit('isereHasRead', true);
    });
