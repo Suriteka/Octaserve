@@ -12,6 +12,7 @@ const server = express()
 let clientTv = null;
 let userPhone = null;
 let dronePhone = null;
+let iPad = null;
 
 const io = socketIO(server);
 
@@ -37,9 +38,14 @@ io.on('connection', function (socket) {
         io.to(`${dronePhone}`).emit('connectedDrone', 'Hello drone');
     });
 
+    socket.on('iPad', () => {
+        console.log("Connexion de l'iPad");
+        iPad = socket.id;
+    });
+  
     /* Sending video */
     socket.on('sendVideo', (data) => {
-        io.to(`${clientTv}`).emit('video', data);
+        io.to(`${iPad}`).emit('video', data);
     })
 
     /* Events send to screens between User Phone and Screen */
