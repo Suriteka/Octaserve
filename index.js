@@ -102,10 +102,10 @@ io.on('connection', function (socket) {
         io.to(`${clientTv}`).emit('loadDrone', true);
     });
     socket.on('startDrone', () => {
-        io.to(`${clientTv}`).emit('startDrone', true);
+        io.emit('startDrone', true);
     });
     socket.on('stopByUserDrone', () => {
-        io.to(`${clientTv}`).emit('stopByUserDrone', true);
+        io.emit('stopByUserDrone', true);
     });
     socket.on('sendGyro', (data) => {
         io.to(`${dronePhone}`).emit('sendGyro', data);
