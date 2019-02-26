@@ -110,6 +110,9 @@ io.on('connection', function (socket) {
     socket.on('startDrone', () => {
         io.emit('startDrone', true);
     });
+    socket.on('readTuto', () => {
+        io.to(`${clientTv}`).emit('readTuto', true);
+    });
     socket.on('takeOffDrone', () => {
         io.emit('startDroneView', true);
     });
