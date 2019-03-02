@@ -119,7 +119,8 @@ io.on('connection', function (socket) {
         io.emit('startDroneView', true);
     });
     socket.on('landingDrone', () => {
-        socket.on('landingDrone', () => {
+        console.log("Landing drone");
+        io.emit('stopDrone', true);
         io.emit('stopDroneView', true);
     });
     socket.on('sendGyro', (data) => {
