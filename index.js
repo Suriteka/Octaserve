@@ -81,10 +81,10 @@ io.on('connection', function (socket) {
         io.to(`${clientTv}`).emit('stopIntroduction', true);
     });
     socket.on('understandIntroduction', () => {
-        io.to(`${clientTv}`).emit('understandIntroduction', true);
+        io.to(`${clientTv}`).emit('understandIntroductionOne', true);
     });
     socket.on('understandIntroduction', () => {
-        io.to(`${clientTv}`).emit('understandIntroduction', true);
+        io.to(`${clientTv}`).emit('understandIntroductionTwo', true);
     });
     socket.on('letsGoIntroduction', () => {
         io.to(`${clientTv}`).emit('letsGoIntroduction', true);
