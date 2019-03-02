@@ -108,7 +108,7 @@ io.on('connection', function (socket) {
         io.to(`${clientTv}`).emit('loadDrone', true);
     });
     socket.on('startDrone', () => {
-        socket.on('startDroneView', () => {
+        console.log("Start Drone");
         io.emit('startDrone', true);
     });
     socket.on('readTuto', () => {
