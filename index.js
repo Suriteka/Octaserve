@@ -108,15 +108,18 @@ io.on('connection', function (socket) {
         io.to(`${clientTv}`).emit('loadDrone', true);
     });
     socket.on('startDrone', () => {
+        socket.on('startDroneView', () => {
         io.emit('startDrone', true);
     });
     socket.on('readTuto', () => {
         io.to(`${clientTv}`).emit('readTuto', true);
     });
-    socket.on('takeOffDrone', () => {
+    socket.on('startDroneView', () => {
+        console.log("Start Drone View");
         io.emit('startDroneView', true);
     });
     socket.on('landingDrone', () => {
+        socket.on('landingDrone', () => {
         io.emit('stopDroneView', true);
     });
     socket.on('sendGyro', (data) => {
