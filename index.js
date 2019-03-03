@@ -42,7 +42,7 @@ io.on('connection', function (socket) {
         console.log("Connexion de l'iPad");
         iPad = socket.id;
     });
-  
+
     /* Sending video */
     socket.on('sendVideo', (data) => {
         io.to(`${iPad}`).emit('video', data);
@@ -58,7 +58,7 @@ io.on('connection', function (socket) {
     socket.on('isereView', () => {
         io.to(`${clientTv}`).emit('isereView', true);
     });
-    
+
     socket.on('useHeadPhone', () => {
         io.to(`${clientTv}`).emit('useHeadPhone', true);
     });
@@ -80,10 +80,10 @@ io.on('connection', function (socket) {
     socket.on('stopIntroduction', () => {
         io.to(`${clientTv}`).emit('stopIntroduction', true);
     });
-    socket.on('understandIntroduction', () => {
+    socket.on('understandIntroductionOne', () => {
         io.to(`${clientTv}`).emit('understandIntroductionOne', true);
     });
-    socket.on('understandIntroduction', () => {
+    socket.on('understandIntroductionTwo', () => {
         io.to(`${clientTv}`).emit('understandIntroductionTwo', true);
     });
     socket.on('letsGoIntroduction', () => {
