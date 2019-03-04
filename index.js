@@ -126,6 +126,10 @@ io.on('connection', function (socket) {
     socket.on('sendGyro', (data) => {
         io.to(`${dronePhone}`).emit('sendGyro', data);
     })
+  
+    socket.on('battery', (data) => {
+      io.to(`${iPad}`).emit('battery', data);
+    });
 
     socket.on('disconnect', function () {
         // if (clientTv === socket.id) {
