@@ -91,12 +91,6 @@ io.on('connection', function (socket) {
     socket.on('letsGoIntroduction', () => {
         io.to(`${clientTv}`).emit('letsGoIntroduction', true);
     });
-    socket.on('letsGoIntroduction', () => {
-        io.to(`${clientTv}`).emit('letsGoIntroduction', true);
-    });
-    socket.on('letsGoIntroduction', () => {
-        io.to(`${clientTv}`).emit('letsGoIntroduction', true);
-    });
     socket.on('chooseLandscape', (data) => {
         io.to(`${clientTv}`).emit('chooseLandscape', data);
     });
