@@ -54,11 +54,12 @@ io.on('connection', function (socket) {
         io.to(`${clientTv}`).emit('lookAtScreen', true);
 
     });
+
     socket.on('isereView', () => {
         io.to(`${clientTv}`).emit('isereView', true);
     });
     socket.on('isereViewToUsePhone', () => {
-        io.to(`${clientTv}`).emit('isereView', true);
+        io.to(`${clientTv}`).emit('isereViewToUsePhone', true);
     });
     socket.on('useHeadPhone', () => {
         io.to(`${clientTv}`).emit('useHeadPhone', true);
