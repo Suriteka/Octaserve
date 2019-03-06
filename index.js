@@ -120,6 +120,7 @@ io.on('connection', function (socket) {
         io.emit('stopDroneView', true);
     });
     socket.on('sendGyro', (data) => {
+        io.to(`${iPad}`).emit('sendGyro', data);
         io.to(`${dronePhone}`).emit('sendGyro', data);
     })
   
